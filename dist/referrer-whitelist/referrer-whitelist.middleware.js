@@ -10,16 +10,15 @@ exports.ReferrerWhitelistMiddleware = void 0;
 const common_1 = require("@nestjs/common");
 let ReferrerWhitelistMiddleware = class ReferrerWhitelistMiddleware {
     constructor() {
-        this.allowedReferrers = [
-            'https://orceus.fr',
-            'https://www.orceus.fr'
+        this.allowedReferrerPatterns = [
+            /^https:\/\/www\.orceus\.fr\//,
+            /^https?:\/\/localhost:3000?\//
         ];
     }
     use(req, res, next) {
-        const referrer = req.headers.referer || req.headers.referrer;
-        console.log('req', req);
+        const referrer = (req.headers.referer || req.headers.referrer);
         console.log('referrer', referrer);
-        if (this.allowedReferrers.includes(referrer)) {
+        if (referrer && this.allowedReferrerPatterns.some(pattern => pattern.test(referrer))) {
             next();
         }
         else {
