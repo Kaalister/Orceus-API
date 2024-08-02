@@ -14,11 +14,14 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
 const user_entity_1 = require("./users/user.entity");
+const dotenv = require("dotenv");
+dotenv.config();
 let AppModule = class AppModule {
     configure(consumer) {
-        consumer
-            .apply(referrer_whitelist_middleware_1.ReferrerWhitelistMiddleware)
-            .forRoutes('*');
+        if (process.env.ENABLE_REFERRER_WHITELIST === 'true')
+            consumer
+                .apply(referrer_whitelist_middleware_1.ReferrerWhitelistMiddleware)
+                .forRoutes('*');
     }
 };
 exports.AppModule = AppModule;

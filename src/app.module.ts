@@ -5,6 +5,9 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { UsersModule } from './users/users.module'
 import { User } from './users/user.entity'
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 @Module({
 	imports: [
@@ -23,10 +26,12 @@ import { User } from './users/user.entity'
 	controllers: [AppController],
 	providers: [AppService],
 })
+
 export class AppModule {
 	configure(consumer: MiddlewareConsumer) {
-		consumer
-			.apply(ReferrerWhitelistMiddleware)
-			.forRoutes('*'); // Apply to all routes, adjust if needed
+		if (process.env.ENABLE_REFERRER_WHITELIST === 'true')
+			consumer
+				.apply(ReferrerWhitelistMiddleware)
+				.forRoutes('*')
 	}
 }

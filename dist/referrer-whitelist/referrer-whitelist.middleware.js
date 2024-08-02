@@ -12,7 +12,7 @@ let ReferrerWhitelistMiddleware = class ReferrerWhitelistMiddleware {
     constructor() {
         this.allowedReferrerPatterns = [
             /^https:\/\/www\.orceus\.fr\//,
-            /^https?:\/\/localhost:3000?\//
+            /^https?:\/\/localhost:3000\//,
         ];
     }
     use(req, res, next) {
