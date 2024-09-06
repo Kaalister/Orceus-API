@@ -13,8 +13,6 @@ export class ReferrerWhitelistMiddleware implements NestMiddleware {
 			req.headers.referer || req.headers.referrer
 		) as string | undefined
 
-		console.log(referrer);
-
 		if (referrer && this.allowedReferrerPatterns.some(pattern =>
 			pattern.test(referrer)
 		)) {

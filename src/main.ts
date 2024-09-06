@@ -16,14 +16,6 @@ async function bootstrap() {
     	.build();
 	const document = SwaggerModule.createDocument(app, config);
 
-	app.enableCors({
-		origin: 'http://localhost:3000',
-		methods: 'GET,POST,PUT,DELETE,OPTIONS',
-		allowedHeaders: 'Content-Type, Authorization',
-		credentials: true,
-	  });
-	
-
 	SwaggerModule.setup('api', app, document);
 
 	app.useStaticAssets(join(homedir(), 'images'), {
