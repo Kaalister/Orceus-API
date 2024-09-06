@@ -16,6 +16,13 @@ async function bootstrap() {
     	.build();
 	const document = SwaggerModule.createDocument(app, config);
 
+	app.enableCors({
+		origin: 'https://www.orceus.fr',
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+		credentials: true,
+	});
+	
+
 	SwaggerModule.setup('api', app, document);
 
 	app.useStaticAssets(join(homedir(), 'images'), {
