@@ -14,7 +14,6 @@ const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateInventoryItemDto {
     constructor() {
-        this.nb = 0;
         this.stage = null;
         this.carac = '';
         this.desc = '';

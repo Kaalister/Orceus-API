@@ -13,8 +13,8 @@ exports.UpdateConfigDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const create_config_dto_1 = require("./create-config.dto");
-class UpdateConfigDto extends (0, swagger_1.PickType)(create_config_dto_1.CreateConfigDto, [
-    'puissName',
+class UpdateConfigDto extends (0, swagger_1.OmitType)(create_config_dto_1.CreateConfigDto, [
+    'id',
 ]) {
 }
 exports.UpdateConfigDto = UpdateConfigDto;

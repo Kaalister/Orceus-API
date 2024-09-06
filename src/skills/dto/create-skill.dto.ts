@@ -5,12 +5,12 @@ export class CreateSkillItemDto {
     @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly name: string;
+    readonly name!: string;
 
     @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly desc: string;
+    readonly desc!: string;
 
     @IsEmpty()
     readonly id?: string;

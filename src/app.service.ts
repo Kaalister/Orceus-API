@@ -3,10 +3,6 @@ import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class AppService {
-	getHello(): string {
-		return 'Hello World!';
-	}
-
 	async login(password: string) {
 		const isAdmin = await bcrypt.compare(password, process.env.ADMIN_PWD);
 		const isUser = await bcrypt.compare(password, process.env.USER_PWD);

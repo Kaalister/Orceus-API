@@ -13,17 +13,13 @@ exports.UpdateSkillItemDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const create_skill_dto_1 = require("./create-skill.dto");
-class UpdateSkillItemDto extends (0, swagger_1.PickType)(create_skill_dto_1.CreateSkillItemDto, [
-    'name',
-    'desc'
+class UpdateSkillItemDto extends (0, swagger_1.OmitType)(create_skill_dto_1.CreateSkillItemDto, [
+    'id',
 ]) {
 }
 exports.UpdateSkillItemDto = UpdateSkillItemDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    }),
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

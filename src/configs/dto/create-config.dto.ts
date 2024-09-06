@@ -5,7 +5,7 @@ export class CreateConfigDto {
     @ApiPropertyOptional({ type: String })
     @IsOptional()
     @IsString()
-    readonly puissName: string = null;
+    readonly puissName?: string = null;
 
     @IsNotEmpty()
     readonly id?: string;

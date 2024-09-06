@@ -13,27 +13,13 @@ exports.UpdateFightStatsDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const create_fight_stats_dto_1 = require("./create-fight-stats.dto");
 const class_validator_1 = require("class-validator");
-class UpdateFightStatsDto extends (0, swagger_1.PickType)(create_fight_stats_dto_1.CreateFightStatsDto, [
-    'agi',
-    'att',
-    'cac',
-    'def',
-    'defMag',
-    'defPhy',
-    'dist',
-    'dodge',
-    'mag',
-    'puiss',
-    'stren',
-    'vit',
+class UpdateFightStatsDto extends (0, swagger_1.OmitType)(create_fight_stats_dto_1.CreateFightStatsDto, [
+    'id',
 ]) {
 }
 exports.UpdateFightStatsDto = UpdateFightStatsDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    }),
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

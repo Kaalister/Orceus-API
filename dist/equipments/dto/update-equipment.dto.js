@@ -13,17 +13,8 @@ exports.UpdateEquipmentDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const create_equipment_dto_1 = require("./create-equipment.dto");
-class UpdateEquipmentDto extends (0, swagger_1.PickType)(create_equipment_dto_1.CreateEquipmentDto, [
-    'amulets',
-    'botClothes',
-    'gloves',
-    'helmets',
-    'others',
-    'plastrons',
-    'shields',
-    'shoes',
-    'topClothes',
-    'weapons',
+class UpdateEquipmentDto extends (0, swagger_1.OmitType)(create_equipment_dto_1.CreateEquipmentDto, [
+    'id'
 ]) {
 }
 exports.UpdateEquipmentDto = UpdateEquipmentDto;

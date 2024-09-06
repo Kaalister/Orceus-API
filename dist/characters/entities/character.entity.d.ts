@@ -13,7 +13,7 @@ export declare class Character {
     firstname?: string;
     hp?: number;
     hpMax?: number;
-    image: Image;
+    image?: Image;
     inventory?: InventoryItem[];
     job?: string;
     lastname?: string;

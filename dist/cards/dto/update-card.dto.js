@@ -19,11 +19,8 @@ class UpdateCardDto extends (0, swagger_1.OmitType)(create_card_dto_1.CreateCard
 }
 exports.UpdateCardDto = UpdateCardDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    }),
-    (0, class_validator_1.IsOptional)(),
+    (0, swagger_1.ApiProperty)({ type: String }),
+    (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateCardDto.prototype, "id", void 0);

@@ -17,9 +17,11 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const character_entity_1 = require("./entities/character.entity");
+const images_service_1 = require("../images/images.service");
 let CharactersService = class CharactersService {
-    constructor(charactersRepository) {
+    constructor(charactersRepository, imagesService) {
         this.charactersRepository = charactersRepository;
+        this.imagesService = imagesService;
     }
     findAll() {
         return this.charactersRepository.find();
@@ -43,6 +45,8 @@ let CharactersService = class CharactersService {
         const character = await this.charactersRepository.findOneBy({ id });
         if (!character)
             throw new common_1.NotFoundException(`The character with the id : ${id} is not found`);
+        if (character.image)
+            this.imagesService.deleteImage(character.image.id);
         await this.charactersRepository.delete({ id });
     }
 };
@@ -50,6 +54,7 @@ exports.CharactersService = CharactersService;
 exports.CharactersService = CharactersService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(character_entity_1.Character)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        images_service_1.ImagesService])
 ], CharactersService);
 //# sourceMappingURL=characters.service.js.map

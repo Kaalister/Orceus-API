@@ -10,9 +10,6 @@ exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 const bcrypt = require("bcrypt");
 let AppService = class AppService {
-    getHello() {
-        return 'Hello World!';
-    }
     async login(password) {
         const isAdmin = await bcrypt.compare(password, process.env.ADMIN_PWD);
         const isUser = await bcrypt.compare(password, process.env.USER_PWD);

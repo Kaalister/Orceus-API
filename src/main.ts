@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { join } from 'path';
+import { homedir } from 'os';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as dotenv from 'dotenv';
 
@@ -11,14 +12,13 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	const config = new DocumentBuilder()
     	.setTitle('Orceus Api')
-    	.setDescription('API documentation')
 		.setVersion('1.0')
     	.build();
 	const document = SwaggerModule.createDocument(app, config);
 
 	SwaggerModule.setup('api', app, document);
 
-	app.useStaticAssets(join(__dirname, '..', 'images'), {
+	app.useStaticAssets(join(homedir(), 'images'), {
 		prefix: '/images/',
 	});
 

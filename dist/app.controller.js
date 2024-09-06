@@ -14,13 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const app_service_1 = require("./app.service");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
-    }
-    getHello() {
-        return this.appService.getHello();
     }
     login(password) {
         return this.appService.login(password);
@@ -28,12 +26,17 @@ let AppController = class AppController {
 };
 exports.AppController = AppController;
 __decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
-__decorate([
+    (0, swagger_1.ApiOperation)({ description: 'Login to the app' }),
+    (0, swagger_1.ApiOkResponse)({
+        example: {
+            password: 'myPassword',
+            connected: true,
+            sessionType: '0000001',
+        }
+    }),
+    (0, swagger_1.ApiUnauthorizedResponse)({
+        description: 'Unauthorized'
+    }),
     (0, common_1.Put)('login'),
     __param(0, (0, common_1.Body)('password')),
     __metadata("design:type", Function),
@@ -41,6 +44,7 @@ __decorate([
     __metadata("design:returntype", Object)
 ], AppController.prototype, "login", null);
 exports.AppController = AppController = __decorate([
+    (0, swagger_1.ApiTags)('login'),
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);

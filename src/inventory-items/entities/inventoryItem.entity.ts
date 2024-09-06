@@ -7,116 +7,135 @@ import {
     PrimaryGeneratedColumn,
     JoinTable,
 } from "typeorm";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Character } from "../../characters/entities/character.entity";
 import { Equipment } from "../../equipments/entities/equipment.entity";
 
 @Entity('inventory_items')
 export class InventoryItem {
+    @ApiProperty({ type: String })
     @PrimaryGeneratedColumn("uuid")
-    public id: string;
+    id!: string;
 
+    @ApiProperty({ type: () => Character })
     @ManyToOne(() => Character, character => character.inventory, {
         onDelete: 'CASCADE',
         orphanedRowAction: 'delete',
     })
     @JoinColumn({ name: 'character_id' })
-    public characterId: string;
+    characterId!: Character;
 
+    @ApiPropertyOptional({ type: Number, default: null })
     @Column({ nullable: true })
-    public stage: number;
+    stage?: number;
 
+    @ApiProperty({ type: Number, default: null })
     @Column({ nullable: false })
-    public nb: number;
+    nb!: number;
 
+    @ApiPropertyOptional({ type: String, default: '' })
     @Column({ default: '', nullable: false })
-    public carac: string;
+    carac?: string;
 
+    @ApiProperty({ type: String, default: '' })
     @Column({ nullable: false })
-    public name: string;
+    name!: string;
 
+    @ApiProperty({ type: String })
     @Column({ nullable: false })
-    public type: string;
+    type!: string;
 
+    @ApiPropertyOptional({ type: String, default: '' })
     @Column({ name: 'description', default: '', nullable: false })
-    public desc: string;
+    desc: string;
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.weapons)
     @JoinTable({
         name: 'link_inventory_items_equipments_weapons',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedWeapons: Equipment[]
+    equipedWeapons?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.plastrons)
     @JoinTable({
         name: 'link_inventory_items_equipments_plastrons',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedPlastrons: Equipment[]
+    equipedPlastrons?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.shields)
     @JoinTable({
         name: 'link_inventory_items_equipments_shields',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedShields: Equipment[]
+    equipedShields?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.helmets)
     @JoinTable({
         name: 'link_inventory_items_equipments_helmets',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedHelmets: Equipment[]
+    equipedHelmets?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.gloves)
     @JoinTable({
         name: 'link_inventory_items_equipments_gloves',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedGloves: Equipment[]
+    equipedGloves?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.shoes)
     @JoinTable({
         name: 'link_inventory_items_equipments_shoes',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedShoes: Equipment[]
+    equipedShoes?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.topClothes)
     @JoinTable({
         name: 'link_inventory_items_equipments_top_clothes',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedTopClothes: Equipment[]
+    equipedTopClothes?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.botClothes)
     @JoinTable({
         name: 'link_inventory_items_equipments_bot_clothes',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedBotClothes: Equipment[]
+    equipedBotClothes?: Equipment[]
 
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.amulets)
     @JoinTable({
         name: 'link_inventory_items_equipments_amulets',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedAmulets: Equipment[]
-
+    equipedAmulets?: Equipment[]
+    
+    @ApiPropertyOptional({ type: () => [Equipment], default: [] })
     @ManyToMany(() => Equipment, eq => eq.others)
     @JoinTable({
         name: 'link_inventory_items_equipments_others',
         joinColumn: { name: 'id', referencedColumnName: 'id'},
         inverseJoinColumn: {name: 'id', referencedColumnName: 'id'}
     })
-    public equipedOthers: Equipment[]
+    equipedOthers?: Equipment[]
 }

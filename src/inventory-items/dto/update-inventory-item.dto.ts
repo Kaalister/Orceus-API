@@ -1,20 +1,15 @@
-import { ApiProperty, PickType } from "@nestjs/swagger";
+import { ApiProperty, OmitType } from "@nestjs/swagger";
 import {
     IsNotEmpty, 
     IsString,
 } from "class-validator";
 import { CreateInventoryItemDto } from "./create-inventory-item.dto";
 
-export class UpdateInventoryItemDto extends PickType(CreateInventoryItemDto, [
-    'nb',
-    'name',
-    'type',
-    'stage',
-    'carac',
-    'desc',
+export class UpdateInventoryItemDto extends OmitType(CreateInventoryItemDto, [
+    'id',
 ]) {
     @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    id!: string;
+    readonly id!: string;
 }

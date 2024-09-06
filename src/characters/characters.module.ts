@@ -9,6 +9,8 @@ import { Equipment } from '../equipments/entities/equipment.entity';
 import { InventoryItem } from '../inventory-items/entities/inventoryItem.entity';
 import { Skill } from '../skills/entities/skill.entity';
 import { FightStat } from '../fight-stats/entities/fightStat.entity';
+import { ImagesService } from 'src/images/images.service';
+import { Image } from 'src/images/entities/image.entity';
 
 @Module({
 	imports: [
@@ -20,9 +22,13 @@ import { FightStat } from '../fight-stats/entities/fightStat.entity';
 			Equipment,
 			InventoryItem,
 			Skill,
+			Image,
 		])
 	],
 	controllers: [CharactersController],
-	providers: [CharactersService]
+	providers: [
+		CharactersService,
+		ImagesService,
+	]
 })
 export class CharactersModule {}

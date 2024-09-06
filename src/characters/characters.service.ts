@@ -4,12 +4,14 @@ import { Repository } from 'typeorm';
 import { Character } from './entities/character.entity';
 import { CreateCharacterDto } from './dto/create-character.dto';
 import { UpdateCharacterDto } from './dto/update-character.dto';
+import { ImagesService } from 'src/images/images.service';
 
 @Injectable()
 export class CharactersService {
     constructor(
         @InjectRepository(Character)
         private readonly charactersRepository: Repository<Character>,
+        private readonly imagesService: ImagesService
     ) {}
 
     findAll(): Promise<Character[]> {
@@ -49,6 +51,10 @@ export class CharactersService {
             throw new NotFoundException(
                 `The character with the id : ${id} is not found`
             )
+        
+        if (character.image)
+            this.imagesService.deleteImage(character.image.id)
+        
         await this.charactersRepository.delete({ id });
     }
 }

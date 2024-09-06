@@ -16,16 +16,14 @@ import { CreateStatsDto } from "../../stats/dto/create-stats.dto";
 import { CreateImageDto } from "src/images/dto/create-image.dto";
 
 export class CreateCharacterDto {
-    @ApiPropertyOptional({
-        type: () => CreateConfigDto
-    })
+    @ApiPropertyOptional({ type: () => CreateConfigDto })
     @IsOptional()
     @Type(() => CreateConfigDto)
     readonly config?: Partial<CreateConfigDto> = {
         puissName: null
     };
 
-    @ApiPropertyOptional({ type: () => CreateEquipmentDto})
+    @ApiPropertyOptional({ type: () => CreateEquipmentDto })
     @IsOptional()
     @Type(() => CreateEquipmentDto)
     readonly equipment?: Partial<CreateEquipmentDto> = {

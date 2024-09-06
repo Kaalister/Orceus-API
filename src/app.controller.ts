@@ -1,15 +1,32 @@
-import { Controller, Get, Put, Body} from '@nestjs/common'
+import {
+	Controller,
+	Put,
+	Body,
+} from '@nestjs/common'
+import { 
+	ApiOkResponse,
+	ApiOperation,
+	ApiTags,
+	ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import { AppService } from './app.service'
 
+@ApiTags('login')
 @Controller()
 export class AppController {
 	constructor(private readonly appService: AppService) {}
 
-	@Get()
-	getHello(): string {
-		return this.appService.getHello();
-	}
-
+	@ApiOperation({ description: 'Login to the app' })
+	@ApiOkResponse({
+		example: {
+			password: 'myPassword',
+			connected: true,
+			sessionType: '0000001',
+		}
+	})
+	@ApiUnauthorizedResponse({
+		description: 'Unauthorized'
+	})
 	@Put('login')
 	login(@Body('password') password: string): Object {
 		return this.appService.login(password);

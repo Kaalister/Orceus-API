@@ -11,26 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Skill = void 0;
 const typeorm_1 = require("typeorm");
+const swagger_1 = require("@nestjs/swagger");
 const character_entity_1 = require("../../characters/entities/character.entity");
 let Skill = class Skill {
 };
 exports.Skill = Skill;
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Skill.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => character_entity_1.Character }),
     (0, typeorm_1.ManyToOne)(() => character_entity_1.Character, character => character.skills, {
         onDelete: 'CASCADE'
     }),
     (0, typeorm_1.JoinColumn)({ name: 'character_id' }),
-    __metadata("design:type", String)
+    __metadata("design:type", character_entity_1.Character)
 ], Skill.prototype, "characterId", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.Column)({ nullable: false }),
     __metadata("design:type", String)
 ], Skill.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.Column)({ name: 'description', nullable: false }),
     __metadata("design:type", String)
 ], Skill.prototype, "desc", void 0);

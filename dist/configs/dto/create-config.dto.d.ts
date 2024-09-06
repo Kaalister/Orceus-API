@@ -1,4 +1,4 @@
 export declare class CreateConfigDto {
-    readonly puissName: string;
+    readonly puissName?: string;
     readonly id?: string;
 }

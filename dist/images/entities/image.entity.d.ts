@@ -5,10 +5,10 @@ export declare class Image {
     filename: string;
     originalName: string;
     size: number;
-    created_at: Date;
-    updated_at: Date;
-    card: Card;
-    mainCards: Card[];
-    character: Character;
+    created_at?: Date;
+    updated_at?: Date;
+    card?: Card;
+    mainCards?: Card[];
+    character?: Character;
     afterRemove(): void;
 }

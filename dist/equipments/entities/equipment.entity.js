@@ -11,16 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Equipment = void 0;
 const typeorm_1 = require("typeorm");
+const swagger_1 = require("@nestjs/swagger");
 const inventoryItem_entity_1 = require("../../inventory-items/entities/inventoryItem.entity");
 const character_entity_1 = require("../../characters/entities/character.entity");
 let Equipment = class Equipment {
 };
 exports.Equipment = Equipment;
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Equipment.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedWeapons, {
         cascade: true,
         eager: true,
@@ -28,6 +31,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "weapons", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedPlastrons, {
         cascade: true,
         eager: true,
@@ -35,6 +39,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "plastrons", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedShields, {
         cascade: true,
         eager: true,
@@ -42,6 +47,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "shields", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedHelmets, {
         cascade: true,
         eager: true,
@@ -49,6 +55,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "helmets", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedGloves, {
         cascade: true,
         eager: true,
@@ -56,6 +63,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "gloves", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedShoes, {
         cascade: true,
         eager: true,
@@ -63,6 +71,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "shoes", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedTopClothes, {
         cascade: true,
         eager: true,
@@ -70,6 +79,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "topClothes", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedBotClothes, {
         cascade: true,
         eager: true,
@@ -77,6 +87,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "botClothes", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedAmulets, {
         cascade: true,
         eager: true,
@@ -84,6 +95,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "amulets", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [inventoryItem_entity_1.InventoryItem], default: [] }),
     (0, typeorm_1.ManyToMany)(() => inventoryItem_entity_1.InventoryItem, it => it.equipedOthers, {
         cascade: true,
         eager: true,
@@ -91,6 +103,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Equipment.prototype, "others", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => character_entity_1.Character }),
     (0, typeorm_1.OneToOne)(() => character_entity_1.Character, character => character.equipment, {
         onDelete: 'CASCADE',
         orphanedRowAction: 'delete'

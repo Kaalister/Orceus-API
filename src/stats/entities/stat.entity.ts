@@ -5,50 +5,64 @@ import {
     OneToOne,
     PrimaryGeneratedColumn,
 } from "typeorm";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Character } from "../../characters/entities/character.entity";
 
 @Entity('stats')
 export class Stat {
+    @ApiProperty({ type: String })
     @PrimaryGeneratedColumn("uuid")
-    public id: string;
+    id!: string;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public agi: number;
+    agi?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public att: number;
+    att?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public char: number;
+    char?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public def: number;
+    def?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public luck: number;
+    luck?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public obs: number;
+    obs?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public prec: number;
+    prec?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public pui: number;
+    pui?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public stren: number;
+    stren?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public vit: number;
+    vit?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public know: number;
+    know?: number;
 
+    @ApiProperty({ type: () => Character })
     @OneToOne(() => Character, character => character.stats, {
         onDelete: 'CASCADE',
         orphanedRowAction: 'delete',
     })
     @JoinColumn({ name: 'character_id' })
-    public characterId: Character;
+    characterId!: Character;
 }

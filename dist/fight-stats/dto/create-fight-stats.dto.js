@@ -30,73 +30,73 @@ class CreateFightStatsDto {
 }
 exports.CreateFightStatsDto = CreateFightStatsDto;
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "agi", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "att", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "def", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "stren", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "vit", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "puiss", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "cac", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "dist", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "mag", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "defPhy", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateFightStatsDto.prototype, "defMag", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)

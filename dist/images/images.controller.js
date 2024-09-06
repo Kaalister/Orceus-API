@@ -14,10 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImagesController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const platform_express_1 = require("@nestjs/platform-express");
 const multer_1 = require("multer");
 const path_1 = require("path");
 const images_service_1 = require("./images.service");
+const image_entity_1 = require("./entities/image.entity");
+const path_2 = require("path");
+const os_1 = require("os");
 let ImagesController = class ImagesController {
     constructor(imagesService) {
         this.imagesService = imagesService;
@@ -31,22 +35,23 @@ let ImagesController = class ImagesController {
 };
 exports.ImagesController = ImagesController;
 __decorate([
+    (0, swagger_1.ApiOperation)({ description: 'Upload image' }),
+    (0, swagger_1.ApiCreatedResponse)({
+        description: 'Image created',
+        type: image_entity_1.Image,
+    }),
+    (0, swagger_1.ApiNotAcceptableResponse)({ description: 'File not acceptable' }),
     (0, common_1.Post)('upload'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {
         storage: (0, multer_1.diskStorage)({
-            destination: './images',
-            filename: (req, file, callback) => {
+            destination: (0, path_2.join)((0, os_1.homedir)(), 'images'),
+            filename: (_, file, callback) => {
                 const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
                 const ext = (0, path_1.extname)(file.originalname);
                 const filename = `${uniqueSuffix}${ext}`;
                 callback(null, filename);
             }
-        }),
-        fileFilter: (_, file, callback) => {
-            if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/))
-                return callback(new Error('Only image files are allowed!'), false);
-            callback(null, true);
-        }
+        })
     })),
     __param(0, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
@@ -54,6 +59,11 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ImagesController.prototype, "uploadFile", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ description: 'Delete image' }),
+    (0, swagger_1.ApiNoContentResponse)({ description: 'Delete with success' }),
+    (0, swagger_1.ApiNotFoundResponse)({
+        description: 'Image not found'
+    }),
     (0, common_1.Delete)(':id'),
     (0, common_1.HttpCode)(204),
     __param(0, (0, common_1.Param)('id')),
@@ -62,6 +72,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ImagesController.prototype, "deleteFile", null);
 exports.ImagesController = ImagesController = __decorate([
+    (0, swagger_1.ApiTags)('images'),
     (0, common_1.Controller)('images'),
     __metadata("design:paramtypes", [images_service_1.ImagesService])
 ], ImagesController);

@@ -6,52 +6,67 @@ import {
     JoinColumn,
 } from "typeorm";
 import { Character } from "../../characters/entities/character.entity";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 @Entity('fight_stats')
 export class FightStat {
+    @ApiProperty({ type: String })
     @PrimaryGeneratedColumn("uuid")
-    id: string;
+    id!: string;
 
+    @ApiProperty({ type: () => Character })
     @OneToOne(() => Character, character => character.fight, {
         onDelete: 'CASCADE',
         orphanedRowAction: 'delete',
     })
     @JoinColumn({ name: 'character_id' })
-    public characterId: Character;
+    characterId!: Character;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public agi: number;
+    agi?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public att: number;
+    att?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public def: number;
+    def?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public puiss: number;
+    puiss?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public stren: number;
+    stren?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public vit: number;
+    vit?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public cac: number;
+    cac?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public dist: number;
+    dist?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public mag: number;
+    mag?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public defPhy: number;
+    defPhy?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public defMag: number;
+    defMag?: number;
 
+    @ApiPropertyOptional({ type: Number, default: 0 })
     @Column({ default: 0, nullable: false })
-    public dodge: number;
+    dodge?: number;
 }

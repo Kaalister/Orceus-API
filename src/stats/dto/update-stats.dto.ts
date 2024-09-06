@@ -1,25 +1,12 @@
-import { ApiProperty, PickType } from "@nestjs/swagger";
+import { ApiProperty, OmitType, PickType } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
 import { CreateStatsDto } from "./create-stats.dto";
 
-export class UpdateStatsDto extends PickType(CreateStatsDto, [
-    'agi',
-    'att',
-    'char',
-    'def',
-    'know',
-    'luck',
-    'obs',
-    'prec',
-    'pui',
-    'stren',
-    'vit',
+export class UpdateStatsDto extends OmitType(CreateStatsDto, [
+    'id',
 ]) {
-    @ApiProperty({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    })
+    @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly id?: string;
+    readonly id!: string;
 }

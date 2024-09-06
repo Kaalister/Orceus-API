@@ -1,6 +1,6 @@
 import { CreateInventoryItemDto } from "./create-inventory-item.dto";
-declare const UpdateInventoryItemDto_base: import("@nestjs/common").Type<Pick<CreateInventoryItemDto, "nb" | "name" | "type" | "stage" | "carac" | "desc">>;
+declare const UpdateInventoryItemDto_base: import("@nestjs/common").Type<Omit<CreateInventoryItemDto, "id">>;
 export declare class UpdateInventoryItemDto extends UpdateInventoryItemDto_base {
-    id: string;
+    readonly id: string;
 }
 export {};

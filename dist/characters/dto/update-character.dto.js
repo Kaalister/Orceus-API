@@ -13,33 +13,13 @@ exports.UpdateCharacterDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const create_character_dto_1 = require("./create-character.dto");
-class UpdateCharacterDto extends (0, swagger_1.PickType)(create_character_dto_1.CreateCharacterDto, [
-    'config',
-    'equipment',
-    'fight',
-    'firstname',
-    'hp',
-    'hpMax',
-    'image',
-    'inventory',
-    'job',
-    'lastname',
-    'level',
-    'lore',
-    'notes',
-    'skills',
-    'specie',
-    'stats',
-    'yearOld',
-    'dead',
+class UpdateCharacterDto extends (0, swagger_1.OmitType)(create_character_dto_1.CreateCharacterDto, [
+    'id',
 ]) {
 }
 exports.UpdateCharacterDto = UpdateCharacterDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    }),
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

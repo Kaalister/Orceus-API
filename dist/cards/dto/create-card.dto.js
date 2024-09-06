@@ -27,78 +27,55 @@ class CreateCardDto {
 }
 exports.CreateCardDto = CreateCardDto;
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: () => [create_image_dto_1.CreateImageDto],
-        example: '[123e4567-e89b-12d3-a456-426614174000, 123e4567-e89b-12d3-a456-426614174000]'
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [create_image_dto_1.CreateImageDto] }),
     (0, class_validator_1.IsOptional)(),
     (0, class_transformer_1.Type)(() => create_image_dto_1.CreateImageDto),
     __metadata("design:type", Array)
 ], CreateCardDto.prototype, "images", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: () => create_image_dto_1.CreateImageDto }),
     (0, class_validator_1.IsOptional)(),
     (0, class_transformer_1.Type)(() => create_image_dto_1.CreateImageDto),
     __metadata("design:type", create_image_dto_1.CreateImageDto)
 ], CreateCardDto.prototype, "mainImage", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: Number,
-        example: 1
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsDecimal)(),
     __metadata("design:type", Number)
 ], CreateCardDto.prototype, "cardNum", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: String,
-        example: 'Voici une description'
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: String }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateCardDto.prototype, "desc", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: Boolean
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Boolean }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], CreateCardDto.prototype, "hidden", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: String,
-        example: 'toto'
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: String }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateCardDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: String,
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: String }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateCardDto.prototype, "specie", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: [String],
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: [String] }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)
 ], CreateCardDto.prototype, "tags", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({
-        type: String,
-    }),
+    (0, swagger_1.ApiPropertyOptional)({ type: String }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

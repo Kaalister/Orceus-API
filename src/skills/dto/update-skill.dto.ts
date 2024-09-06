@@ -1,16 +1,12 @@
-import { ApiProperty, PickType } from "@nestjs/swagger";
+import { ApiProperty, OmitType } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
 import { CreateSkillItemDto } from "./create-skill.dto";
 
-export class UpdateSkillItemDto extends PickType(CreateSkillItemDto, [
-    'name',
-    'desc'
+export class UpdateSkillItemDto extends OmitType(CreateSkillItemDto, [
+    'id',
 ]) {
-    @ApiProperty({
-        type: String,
-        example: '123e4567-e89b-12d3-a456-426614174000'
-    })
+    @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly id: string;
+    readonly id!: string;
 }

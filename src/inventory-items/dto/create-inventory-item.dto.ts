@@ -11,17 +11,17 @@ export class CreateInventoryItemDto {
     @ApiProperty({ type: Number })
     @IsNotEmpty()
     @IsNumber()
-    readonly nb: number = 0;
+    readonly nb!: number;
 
     @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly name: string;
+    readonly name!: string;
 
     @ApiProperty({ type: String })
     @IsNotEmpty()
     @IsString()
-    readonly type: string;
+    readonly type!: string;
 
     @ApiPropertyOptional({ type: Number })
     @IsOptional()

@@ -13,13 +13,8 @@ exports.UpdateInventoryItemDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const create_inventory_item_dto_1 = require("./create-inventory-item.dto");
-class UpdateInventoryItemDto extends (0, swagger_1.PickType)(create_inventory_item_dto_1.CreateInventoryItemDto, [
-    'nb',
-    'name',
-    'type',
-    'stage',
-    'carac',
-    'desc',
+class UpdateInventoryItemDto extends (0, swagger_1.OmitType)(create_inventory_item_dto_1.CreateInventoryItemDto, [
+    'id',
 ]) {
 }
 exports.UpdateInventoryItemDto = UpdateInventoryItemDto;

@@ -10,16 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Card = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const image_entity_1 = require("../../images/entities/image.entity");
 const typeorm_1 = require("typeorm");
 let Card = class Card {
 };
 exports.Card = Card;
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Card.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [image_entity_1.Image], default: [] }),
     (0, typeorm_1.OneToMany)(() => image_entity_1.Image, img => img.card, {
         cascade: true,
         eager: true,
@@ -27,6 +30,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "images", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => image_entity_1.Image, default: null }),
     (0, typeorm_1.ManyToOne)(() => image_entity_1.Image, img => img.mainCards, {
         cascade: true,
         onDelete: 'SET NULL',
@@ -36,30 +40,37 @@ __decorate([
     __metadata("design:type", image_entity_1.Image)
 ], Card.prototype, "mainImage", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: Number }),
     (0, typeorm_1.Column)({ name: 'card_num', nullable: false }),
     __metadata("design:type", Number)
 ], Card.prototype, "cardNum", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ name: 'description', default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "desc", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: Boolean, default: false }),
     (0, typeorm_1.Column)({ default: false }),
     __metadata("design:type", Boolean)
 ], Card.prototype, "hidden", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "specie", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: [String], default: [] }),
     (0, typeorm_1.Column)('text', { array: true, default: [] }),
     __metadata("design:type", Array)
 ], Card.prototype, "tags", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "type", void 0);

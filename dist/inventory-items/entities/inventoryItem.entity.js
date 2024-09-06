@@ -11,48 +11,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryItem = void 0;
 const typeorm_1 = require("typeorm");
+const swagger_1 = require("@nestjs/swagger");
 const character_entity_1 = require("../../characters/entities/character.entity");
 const equipment_entity_1 = require("../../equipments/entities/equipment.entity");
 let InventoryItem = class InventoryItem {
 };
 exports.InventoryItem = InventoryItem;
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], InventoryItem.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => character_entity_1.Character }),
     (0, typeorm_1.ManyToOne)(() => character_entity_1.Character, character => character.inventory, {
         onDelete: 'CASCADE',
         orphanedRowAction: 'delete',
     }),
     (0, typeorm_1.JoinColumn)({ name: 'character_id' }),
-    __metadata("design:type", String)
+    __metadata("design:type", character_entity_1.Character)
 ], InventoryItem.prototype, "characterId", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: null }),
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], InventoryItem.prototype, "stage", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: Number, default: null }),
     (0, typeorm_1.Column)({ nullable: false }),
     __metadata("design:type", Number)
 ], InventoryItem.prototype, "nb", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ default: '', nullable: false }),
     __metadata("design:type", String)
 ], InventoryItem.prototype, "carac", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ nullable: false }),
     __metadata("design:type", String)
 ], InventoryItem.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: String }),
     (0, typeorm_1.Column)({ nullable: false }),
     __metadata("design:type", String)
 ], InventoryItem.prototype, "type", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: String, default: '' }),
     (0, typeorm_1.Column)({ name: 'description', default: '', nullable: false }),
     __metadata("design:type", String)
 ], InventoryItem.prototype, "desc", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.weapons),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_weapons',
@@ -62,6 +72,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedWeapons", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.plastrons),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_plastrons',
@@ -71,6 +82,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedPlastrons", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.shields),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_shields',
@@ -80,6 +92,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedShields", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.helmets),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_helmets',
@@ -89,6 +102,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedHelmets", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.gloves),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_gloves',
@@ -98,6 +112,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedGloves", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.shoes),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_shoes',
@@ -107,6 +122,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedShoes", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.topClothes),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_top_clothes',
@@ -116,6 +132,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedTopClothes", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.botClothes),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_bot_clothes',
@@ -125,6 +142,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedBotClothes", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.amulets),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_amulets',
@@ -134,6 +152,7 @@ __decorate([
     __metadata("design:type", Array)
 ], InventoryItem.prototype, "equipedAmulets", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: () => [equipment_entity_1.Equipment], default: [] }),
     (0, typeorm_1.ManyToMany)(() => equipment_entity_1.Equipment, eq => eq.others),
     (0, typeorm_1.JoinTable)({
         name: 'link_inventory_items_equipments_others',

@@ -17,11 +17,35 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const image_entity_1 = require("./entities/image.entity");
+const fs = require("fs");
 let ImagesService = class ImagesService {
     constructor(imagesRepository) {
         this.imagesRepository = imagesRepository;
     }
     createImage(file) {
+        if (!file)
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.NOT_ACCEPTABLE,
+                error: 'File not found',
+            }, common_1.HttpStatus.NOT_ACCEPTABLE, {
+                cause: 'File is empty'
+            });
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+            fs.unlink(`images/${file.filename}`, error => {
+                if (error) {
+                    console.error({
+                        message: `Le fichier n'a pas été supprimée : ${file.filename}`,
+                        error: error
+                    });
+                }
+            });
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.NOT_ACCEPTABLE,
+                error: 'Only .gif/.jpg/.jpeg/.png are allowed',
+            }, common_1.HttpStatus.NOT_ACCEPTABLE, {
+                cause: 'File is empty'
+            });
+        }
         const newImage = {
             filename: file.filename,
             originalName: file.originalname,

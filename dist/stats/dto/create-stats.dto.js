@@ -29,67 +29,67 @@ class CreateStatsDto {
 }
 exports.CreateStatsDto = CreateStatsDto;
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "agi", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "att", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "char", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "def", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "luck", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "obs", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "prec", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "pui", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "stren", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateStatsDto.prototype, "vit", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ type: Number }),
+    (0, swagger_1.ApiPropertyOptional)({ type: Number, default: 0 }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
