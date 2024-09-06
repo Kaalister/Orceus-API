@@ -1,6 +1,6 @@
 import {
 	Controller,
-	Put,
+	Post,
 	Get,
 	Body,
 } from '@nestjs/common'
@@ -35,7 +35,7 @@ export class AppController {
 	@ApiUnauthorizedResponse({
 		description: 'Unauthorized'
 	})
-	@Put('login')
+	@Post('login')
 	login(@Body('password') password: string): Object {
 		return this.appService.login(password);
 	}
