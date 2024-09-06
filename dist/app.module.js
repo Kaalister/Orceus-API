@@ -12,8 +12,9 @@ const referrer_whitelist_middleware_1 = require("./referrer-whitelist/referrer-w
 const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
-const user_entity_1 = require("./users/user.entity");
+const cards_module_1 = require("./cards/cards.module");
+const characters_module_1 = require("./characters/characters.module");
+const images_module_1 = require("./images/images.module");
 const dotenv = require("dotenv");
 dotenv.config();
 let AppModule = class AppModule {
@@ -35,10 +36,14 @@ exports.AppModule = AppModule = __decorate([
                 username: 'admin',
                 password: '$7Z5UkCtOX]pE',
                 database: 'orceus',
-                entities: [user_entity_1.User],
+                entities: [
+                    'dist/**/*.entity{.ts,.js}',
+                ],
                 synchronize: true,
             }),
-            users_module_1.UsersModule,
+            cards_module_1.CardsModule,
+            characters_module_1.CharactersModule,
+            images_module_1.ImagesModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

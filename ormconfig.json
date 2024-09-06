@@ -1,0 +1,10 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "$7Z5UkCtOX]pE",
+    "database": "orceus",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "logging": false
+}

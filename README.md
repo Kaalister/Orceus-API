@@ -76,3 +76,4 @@ Nest is [MIT licensed](LICENSE).
 
 - push from dev env
 - pull from server
+- npm run build

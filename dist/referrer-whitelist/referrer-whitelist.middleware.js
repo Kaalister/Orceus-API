@@ -17,7 +17,6 @@ let ReferrerWhitelistMiddleware = class ReferrerWhitelistMiddleware {
     }
     use(req, res, next) {
         const referrer = (req.headers.referer || req.headers.referrer);
-        console.log('referrer', referrer);
         if (referrer && this.allowedReferrerPatterns.some(pattern => pattern.test(referrer))) {
             next();
         }

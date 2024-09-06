@@ -8,9 +8,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
+const bcrypt = require("bcrypt");
 let AppService = class AppService {
     getHello() {
         return 'Hello World!';
+    }
+    async login(password) {
+        const isAdmin = await bcrypt.compare(password, process.env.ADMIN_PWD);
+        const isUser = await bcrypt.compare(password, process.env.USER_PWD);
+        const isVisitor = await bcrypt.compare(password, process.env.VISITOR_PWD);
+        if (isAdmin) {
+            return {
+                password: password,
+                connected: true,
+                sessionType: '09c71624'
+            };
+        }
+        if (isUser) {
+            return {
+                password: password,
+                connected: true,
+                sessionType: '82ffd305'
+            };
+        }
+        if (isVisitor) {
+            return {
+                password: password,
+                connected: true,
+                sessionType: 'a238a5dd'
+            };
+        }
+        throw new common_1.UnauthorizedException();
     }
 };
 exports.AppService = AppService;

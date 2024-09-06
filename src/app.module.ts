@@ -1,10 +1,12 @@
-import { Module, MiddlewareConsumer } from '@nestjs/common'
-import { ReferrerWhitelistMiddleware } from './referrer-whitelist/referrer-whitelist.middleware'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { UsersModule } from './users/users.module'
-import { User } from './users/user.entity'
+import { Module, MiddlewareConsumer } from '@nestjs/common';
+import { ReferrerWhitelistMiddleware } from './referrer-whitelist/referrer-whitelist.middleware';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { CardsModule } from './cards/cards.module';
+import { CharactersModule } from './characters/characters.module';
+import { ImagesModule } from './images/images.module';
+import { join } from 'path';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,10 +20,14 @@ dotenv.config();
 			username: 'admin',
 			password: '$7Z5UkCtOX]pE',
 			database: 'orceus',
-			entities: [User],
+			entities: [
+				'dist/**/*.entity{.ts,.js}',
+			],
 			synchronize: true,
 		}),
-		UsersModule,
+		CardsModule,
+		CharactersModule,
+		ImagesModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
@@ -32,6 +38,6 @@ export class AppModule {
 		if (process.env.ENABLE_REFERRER_WHITELIST === 'true')
 			consumer
 				.apply(ReferrerWhitelistMiddleware)
-				.forRoutes('*')
+				.forRoutes('*');
 	}
 }
