@@ -5,7 +5,6 @@ import * as bcrypt from 'bcrypt'
 export class AppService {
 	async login(password: string) {
 		console.log(password)
-
 		const isAdmin = await bcrypt.compare(password, process.env.ADMIN_PWD);
 		const isUser = await bcrypt.compare(password, process.env.USER_PWD);
 		const isVisitor = await bcrypt.compare(password, process.env.VISITOR_PWD);
