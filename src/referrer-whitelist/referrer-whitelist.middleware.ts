@@ -15,13 +15,13 @@ export class ReferrerWhitelistMiddleware implements NestMiddleware {
 
 		console.log(referrer);
 
-		// if (referrer && this.allowedReferrerPatterns.some(pattern =>
-		// 	pattern.test(referrer)
-		// )) {
+		if (referrer && this.allowedReferrerPatterns.some(pattern =>
+			pattern.test(referrer)
+		)) {
 			next()
-		// } else {
-		// 	console.error('Access denied')
-		// 	res.status(403).send('Access denied')
-		// }
+		} else {
+			console.error('Access denied')
+			res.status(403).send('Access denied')
+		}
 	}
 }
