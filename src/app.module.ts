@@ -6,7 +6,6 @@ import { AppService } from './app.service';
 import { CardsModule } from './cards/cards.module';
 import { CharactersModule } from './characters/characters.module';
 import { ImagesModule } from './images/images.module';
-import { join } from 'path';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -35,6 +34,7 @@ dotenv.config();
 
 export class AppModule {
 	configure(consumer: MiddlewareConsumer) {
+
 		if (process.env.ENABLE_REFERRER_WHITELIST === 'true')
 			consumer
 				.apply(ReferrerWhitelistMiddleware)

@@ -12,14 +12,18 @@ export class ReferrerWhitelistMiddleware implements NestMiddleware {
 		const referrer = (
 			req.headers.referer || req.headers.referrer
 		) as string | undefined
-  
-	  if (referrer && this.allowedReferrerPatterns.some(pattern =>
-		pattern.test(referrer)
-	)) {
-		next()
-	  } else {
-		console.error('Access denied')
-		res.status(403).send('Access denied')
-	  }
+
+		console.log(`Request... ${req.method} ${req.url}`);
+		console.log('Headers:', req.headers);
+		console.log('Body:', req.body);
+
+		// if (referrer && this.allowedReferrerPatterns.some(pattern =>
+		// 	pattern.test(referrer)
+		// )) {
+			next()
+		// } else {
+		// 	console.error('Access denied')
+		// 	res.status(403).send('Access denied')
+		// }
 	}
 }
