@@ -17,9 +17,7 @@ async function bootstrap() {
 	const document = SwaggerModule.createDocument(app, config);
 
 	app.enableCors({
-		origin: 'https://www.orceus.fr',
-		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		credentials: true,
+		origin: true,
 	});
 	
 
