@@ -1,6 +1,7 @@
 import {
 	Controller,
 	Put,
+	Get,
 	Body,
 } from '@nestjs/common'
 import { 
@@ -15,6 +16,13 @@ import { AppService } from './app.service'
 @Controller()
 export class AppController {
 	constructor(private readonly appService: AppService) {}
+
+	@Get()
+	test() {
+		return {
+			message: 'test success'
+		}
+	}
 
 	@ApiOperation({ description: 'Login to the app' })
 	@ApiOkResponse({
