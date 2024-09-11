@@ -5,6 +5,7 @@ import { join } from 'path';
 import { homedir } from 'os';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as dotenv from 'dotenv';
+import * as bodyParser from 'body-parser';
 
 dotenv.config();
 
@@ -21,6 +22,9 @@ async function bootstrap() {
 	app.useStaticAssets(join(homedir(), 'images'), {
 		prefix: '/images/',
 	});
+
+	app.use(bodyParser.json());
+  	app.use(bodyParser.urlencoded({ extended: true }));
 
 	await app.listen(3000);
 }
