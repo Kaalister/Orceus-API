@@ -22,6 +22,12 @@ async function bootstrap() {
 		prefix: '/images/',
 	});
 
+	app.enableCors({
+		origin: '*',
+		methods: 'GET,POST,PUT,DELETE,OPTIONS',
+		allowedHeaders: 'Content-Type,Authorization',
+	});
+
 	await app.listen(3000);
 }
 
