@@ -16,7 +16,7 @@ export class ReferrerWhitelistMiddleware implements NestMiddleware {
 		if (referrer && this.allowedReferrerPatterns.some(pattern =>
 			pattern.test(referrer)
 		)) {
-			next()
+			return next()
 		} else {
 			console.error('Access denied')
 			res.status(403).send('Access denied')
