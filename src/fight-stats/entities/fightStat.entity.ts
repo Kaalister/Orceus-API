@@ -59,11 +59,11 @@ export class FightStat {
     mag?: number;
 
     @ApiPropertyOptional({ type: Number, default: 0 })
-    @Column({ default: 0, nullable: false })
+    @Column({ name:'def_phy', default: 0, nullable: false })
     defPhy?: number;
 
     @ApiPropertyOptional({ type: Number, default: 0 })
-    @Column({ default: 0, nullable: false })
+    @Column({ name: 'def_mag', default: 0, nullable: false })
     defMag?: number;
 
     @ApiPropertyOptional({ type: Number, default: 0 })

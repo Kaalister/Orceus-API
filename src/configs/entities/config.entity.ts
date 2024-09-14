@@ -23,6 +23,6 @@ export class Config {
     characterId!: Character;
 
     @ApiPropertyOptional({ type: String })
-    @Column({ default: null, nullable: true })
+    @Column({ name: 'puiss_name', default: null, nullable: true })
     puissName: string;
 }
