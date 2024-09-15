@@ -8,6 +8,7 @@ import {
     Delete,
     HttpCode,
     HttpException,
+    Query,
 } from '@nestjs/common';
 import {
     ApiBadRequestResponse,
@@ -31,8 +32,8 @@ export class CardsController {
     @ApiOperation({ summary: 'Get all cards' })
     @ApiOkResponse({ type: [Card] })
     @Get()
-    findAll() {
-        return this.cardService.findAll();
+    findAll(@Query() query: any) {
+        return this.cardService.findAll(query);
     }
 
     @ApiOperation({ summary: 'Get card by id' })

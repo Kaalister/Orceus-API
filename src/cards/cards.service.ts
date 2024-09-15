@@ -16,8 +16,40 @@ export class CardsService {
         private readonly imagesService:ImagesService
     ) {}
 
-    findAll(): Promise<Card[]> {
-        return this.cardRepository.find();
+    async findAll(query: any): Promise<Card[]> {
+        const cards = await this.cardRepository.find();
+
+        if (!query) return cards;
+
+        return cards.filter(card => {
+            let keep = true;
+
+            if (query.hasOwnProperty('hidden')) {
+                let hidden = query.hidden === 'true';
+                if (hidden !== card.hidden)
+                    keep = false;
+            }
+
+            if (query.hasOwnProperty('tags') &&
+                !query.tags.split(',').every((tag: string) =>
+                    card.tags.includes(tag)
+            ))
+                keep = false;
+            
+            if (query.hasOwnProperty('type') && card.type !== query.type)
+                keep = false;
+
+            if (query.hasOwnProperty('specie') && card.specie !== query.specie)
+                keep = false;
+
+            if (query.hasOwnProperty('search') && (
+                !card.name.toLowerCase().includes(query.search.toLowerCase()) &&
+                !card.desc.toLowerCase().includes(query.search.toLowerCase())
+            ))
+                keep = false;
+
+            return keep
+        });
     }
 
     findOne(id: string): Promise<Card> {
