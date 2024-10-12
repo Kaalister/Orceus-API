@@ -50,8 +50,8 @@ export class Card {
     @Column({ default: '' })
     name?: string;
 
-    @ApiPropertyOptional({ type: String })
-    @Column()
+    @ApiPropertyOptional({ type: String, default: null })
+    @Column({ default: null })
     specie?: string;
 
     @ApiPropertyOptional({ type: [String], default: [] })
